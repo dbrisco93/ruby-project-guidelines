@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_201637) do
+ActiveRecord::Schema.define(version: 2020_10_22_225024) do
 
   create_table "bays", force: :cascade do |t|
     t.string "level"
@@ -23,14 +23,12 @@ ActiveRecord::Schema.define(version: 2020_10_22_201637) do
     t.string "nickname"
     t.string "bay"
     t.string "game"
-    t.string "timeslot"
     t.integer "total"
   end
 
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "club"
   end
 
   create_table "users", force: :cascade do |t|

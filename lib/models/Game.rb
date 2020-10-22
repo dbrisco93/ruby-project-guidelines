@@ -4,11 +4,18 @@ class Game < ActiveRecord::Base
 end
 
 def game_list
-    
     Game.all.map do |game|
-        puts "Name: #{game.name}"
-        puts "Description: #{game.description}"
-        puts "Suggested Club: #{game.club}"
+        puts "#{game.name}
+        How to play: #{game.description}"
     end
-        
+end
+
+def select_game
+    prompt = TTY::Prompt.new()
+    selected_game = prompt.select("Which game would you like to play?",[
+        "Premiere Golf", 
+        "Premiere Pressure", 
+        "Premiere Chip"
+    ])
+
 end

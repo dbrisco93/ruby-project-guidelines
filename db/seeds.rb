@@ -4,9 +4,9 @@ Bay.destroy_all
 
 new_user = User.create(name: "Dominique", nickname: "dom")
 
-g1 = Game.create(name: "Name", description: "A lot of stuuf oapgij", club: "wedge")
-g2 = Game.create(name: "Name2", description: "A lot of stuuf oapgij", club: "drive")
-g3 = Game.create(name: "Name3", description: "A lot of stuuf oapgij", club: "horse")
+g1 = Game.create(name: "Premiere Golf", description: "This is a game for all skill levels, you score more points the farther and more accurate the shot!")
+g2 = Game.create(name: "Premiere Pressure", description: "The pressure is on! With varying assigned targets, you get more points the more accurate the shot.")
+g3 = Game.create(name: "Premiere Chip", description: "For those who want to work on their short game, use only our closest targets to rack up the points.")
 
 b1 = Bay.create(level: 'upper', price: 45, name: 'Lubbock')
 b2 = Bay.create(level: 'upper', price: 55, name: 'Fort Worth')

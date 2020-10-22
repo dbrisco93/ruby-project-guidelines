@@ -34,8 +34,8 @@ def play_game
     end
 
     # # Game Selection  (make this pretty and y/n option)
-    # puts "Choose a Game"
-    # game_list
+    game_list
+    select_game
 
 
 
