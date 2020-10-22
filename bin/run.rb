@@ -18,7 +18,7 @@ def play_game
         answer -= 1
     end
 
-    #Bay Selection
+    #Bay Selection (need to get price)
     bay_selection = prompt.select("Choose a bay", %w(Upper Middle Lower))
 
     if bay_selection == "Upper"
@@ -33,6 +33,13 @@ def play_game
         bay = Bay.lower
     end
 
+    # Game Selection  (make this pretty and y/n option)
+    puts "Choose a Game"
+    game_list
+
+
+
+    # Print Confirmation(need to print confirmation)
 
 
     
