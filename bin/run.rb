@@ -22,20 +22,20 @@ def play_game
     bay_selection = prompt.select("Choose a bay", %w(Upper Middle Lower))
 
     if bay_selection == "Upper"
-        bay = Bay.upper
+        Bay.upper
     end
 
     if bay_selection == "Middle"
-        bay Bay.middle
+        Bay.middle
     end
 
     if bay_selection == "Lower"
-        bay = Bay.lower
+        Bay.lower
     end
 
-    # Game Selection  (make this pretty and y/n option)
-    puts "Choose a Game"
-    game_list
+    # # Game Selection  (make this pretty and y/n option)
+    # puts "Choose a Game"
+    # game_list
 
 
 
