@@ -1,48 +1,49 @@
 require_relative '../config/environment'
 require 'tty-prompt'
 
+
 def play_game
-    prompt = TTY::Prompt.new # calls the prompt
+prompt = TTY::Prompt.new
+
     puts "Welcome to Pinnacle Golf" # title at the beginning
-    puts "How many players? (Up to 6)" #asks how many / answer can only be up to 6
-    answer = gets.chomp.to_i
+ 
 
-    #User Info
-    while answer > 6
-        puts "Too many players, please enter a valid number"
-        answer = gets.chomp.to_i
-    end
+    # User Info
+    User.create_team
+ 
+    # Bay Selection
+    Bay.select_level
 
-    while answer <= 6 && answer > 0
-        User.create_team
-        answer -= 1
-    end
-
-    #Bay Selection (need to get price)
-    bay_selection = prompt.select("Choose a bay", %w(Upper Middle Lower))
-
-    if bay_selection == "Upper"
-        Bay.upper
-    end
-
-    if bay_selection == "Middle"
-        Bay.middle
-    end
-
-    if bay_selection == "Lower"
-        Bay.lower
-    end
-
-    # # Game Selection  (make this pretty and y/n option)
+    # # Game Selection
     game_list
     select_game
 
+    #Confirmation 
+    confirm  = prompt.select("Confirm Reservation",[
+        "Confirm",
+        "Start Over"])
 
+        
+        if confirm == "Confirm"
+            Confirmation.print_confirmation
+        end
 
-    # Print Confirmation(need to print confirmation)
+        if confirm == "Start Over"
+            extra_sure = prompt.select("Are you sure?",[
+        "Yes",
+        "No"])
 
-
+            if extra_sure =- "Yes"
+                play_game
+            end
+            
+            if extra_sure == "No"
+                confirm
+            end
+            
+        end
     
 end
+
 
 play_game

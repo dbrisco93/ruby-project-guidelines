@@ -1,34 +1,37 @@
+require 'tty-prompt'
+
 class Bay < ActiveRecord::Base
     
-    belongs_to :users
+    belongs_to :confirmation
+    
 
-    def self.upper
-        puts "Upper Level Options:"
-        
-        bays = self.all.select { |bay| bay.level == "upper"}
+    def self.select_level
+        prompt = TTY::Prompt.new
+        level_selection = prompt.select("Choose a level", %w(Upper Middle Lower))
+
+        puts "#{level_selection} Level"
+        bays = self.all.select { |bay| bay.level == level_selection }
         bays.map do |b|
             puts "#{b.name} | Price: $#{b.price}"
         end 
-
-
-    end
-
-    def self.middle
-        puts "Middle Level Options:"
         
-        bays = self.all.select { |bay| bay.level == "middle"}
-        bays.map do |b|
-            puts "#{b.name} | Price: $#{b.price}"
-        end 
-    end
+        names = bays.map do |b|
+            b.name
+        end
 
-    def self.lower
-        puts "Lower Level Options:"
+        proceed  = prompt.select("More Bay options?",[
+        "I'm ready to select",
+        "Select different level"])
+
         
-        bays = self.all.select { |bay| bay.level == "upper"}
-        bays.map do |b|
-            puts "#{b.name} | Price: $#{b.price}"
-        end 
+        if proceed == "I'm ready to select"
+            @bay_option = prompt.select("Choose a bay:", names)
+        end
+
+        if proceed == "Select different level"
+            self.select_level
+        end
+
     end
 
 
