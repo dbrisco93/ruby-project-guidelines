@@ -5,7 +5,7 @@ require 'tty-prompt'
 def play_game
 prompt = TTY::Prompt.new
 
-    puts "Welcome to Pinnacle Golf" # title at the beginning
+    puts "Welcome to Pinnacle Golf".colorize(:light_blue) # title at the beginning
  
 
     # User Info
@@ -15,8 +15,8 @@ prompt = TTY::Prompt.new
     Bay.select_level
 
     # # Game Selection
-    game_list
-    select_game
+    Game.game_list
+    Game.select_game
 
     #Confirmation 
     confirm  = prompt.select("Confirm Reservation",[
@@ -33,12 +33,12 @@ prompt = TTY::Prompt.new
         "Yes",
         "No"])
 
-            if extra_sure =- "Yes"
-                play_game
+            if extra_sure == "Yes"
+                self.play_game
             end
             
             if extra_sure == "No"
-                confirm
+                Confirmation.print_confirmation
             end
             
         end
